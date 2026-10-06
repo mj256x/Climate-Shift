@@ -923,7 +923,12 @@ body {
     }
 
     .take-action-now div h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .take-action-now div img {
+        width: 100px;
+        height: 100px;
     }
 
     .take-action-now div:first-child::after {
@@ -932,10 +937,11 @@ body {
 
     .take-action-now div p {
         text-align: center;
+        font-size: 1.1rem;
     }
 
     .take-action-now div button {
-        padding: 5px 10px;
+        padding: 5px 8px;
     }
 
     .take-action-now div:last-child {
