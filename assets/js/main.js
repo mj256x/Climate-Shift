@@ -1,8 +1,7 @@
 function checkActivePage() {
     let navLinks = document.querySelectorAll('.nav-link');
-    console.log(navLinks);
     navLinks.forEach(link => {
-        if (window.location.href === link.firstChild.href) {
+        if (window.location.href === link.querySelector('a').href) {
             link.classList.add('active');
         }
         else {
@@ -27,7 +26,7 @@ function toggleNavbar() {
     }
 }
 
-document.getElementById('copy-link')?.addEventListener('click', () => {
+function copyLink() {
     const siteURL = 'https://mj256x.github.io/Climate-Shift/';
     navigator.clipboard.writeText(siteURL);
     document.getElementById('btn-text').innerText = 'Link Copied!';
@@ -35,9 +34,10 @@ document.getElementById('copy-link')?.addEventListener('click', () => {
     setTimeout(() => {
         document.querySelector('.alert').style.display = 'none';
     }, 2000);
-});
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     checkActivePage();
     document.querySelector('.navbar-collapse-btn').addEventListener('click', toggleNavbar);
+    document.getElementById('copy-link')?.addEventListener('click', copyLink);
 });
