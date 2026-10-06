@@ -27,6 +27,16 @@ function toggleNavbar() {
     }
 }
 
+document.getElementById('copy-link')?.addEventListener('click', () => {
+    const siteURL = 'https://mj256x.github.io/Climate-Shift/';
+    navigator.clipboard.writeText(siteURL);
+    document.getElementById('btn-text').innerText = 'Link Copied!';
+    document.querySelector('.alert').style.display = 'flex';
+    setTimeout(() => {
+        document.querySelector('.alert').style.display = 'none';
+    }, 2000);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     checkActivePage();
     document.querySelector('.navbar-collapse-btn').addEventListener('click', toggleNavbar);
