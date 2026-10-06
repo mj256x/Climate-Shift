@@ -33,6 +33,7 @@ body {
     background-color: var(--nav-footer);
     padding: 10px 20px;
     position: sticky;
+    z-index: 1001;
     top: 0;
     color: var(--text);
     display: flex;
@@ -174,7 +175,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     padding: 20px;
-    background-image: url(images/c.jpg);
+    background-image: url(images/c.webp);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -783,7 +784,7 @@ body {
 
     /* Start Mobile Index-Contene */
     .main-content {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(images/c2.png);
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(images/c2.webp);
         background-position: center;
     }
 
@@ -969,7 +970,7 @@ body {
 
 @media (min-width:769px) and (max-width:1024px) {
     .main-content {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(images/c2.png);
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(images/c2.webp);
         background-position: center;
     }
 
