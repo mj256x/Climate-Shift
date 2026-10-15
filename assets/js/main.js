@@ -1,10 +1,19 @@
 let navLinks = document.querySelectorAll('.nav-link');
 function checkActivePage() {
+    let currentUrl = window.location.href;
     navLinks.forEach(link => {
-        if (window.location.href === link.querySelector('a').href) {
-            link.classList.add('active');
+        let anchor = link.querySelector('a');
+        if (!anchor) return;
+        let linkHref = anchor.getAttribute('href');
+        if (linkHref === '/' || linkHref === 'index.html' || linkHref === './index.html') {
+            if (currentUrl.endsWith('/') || currentUrl.endsWith('index.html')) {
+                link.classList.add('active');
+                return;
+            }
         }
-        else {
+        if (linkHref !== '/' && currentUrl.endsWith(linkHref)) {
+            link.classList.add('active');
+        } else if (linkHref !== '/' && !currentUrl.endsWith(linkHref)) {
             link.classList.remove('active');
         }
     });
