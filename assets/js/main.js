@@ -1,26 +1,36 @@
+let navLinks = document.querySelectorAll('.nav-link');
 function checkActivePage() {
-    let navLinks = document.querySelectorAll('.nav-link');
+    let currentUrl = window.location.href;
     navLinks.forEach(link => {
-        if (window.location.href === link.querySelector('a').href) {
-            link.classList.add('active');
+        let anchor = link.querySelector('a');
+        if (!anchor) return;
+        let linkHref = anchor.getAttribute('href');
+        if (linkHref === '/' || linkHref === 'index.html' || linkHref === './index.html') {
+            if (currentUrl.endsWith('/') || currentUrl.endsWith('index.html')) {
+                link.classList.add('active');
+                return;
+            }
         }
-        else {
+        if (linkHref !== '/' && currentUrl.endsWith(linkHref)) {
+            link.classList.add('active');
+        } else if (linkHref !== '/' && !currentUrl.endsWith(linkHref)) {
             link.classList.remove('active');
         }
     });
 }
 
+const collapsedBtn = document.querySelector('.navbar-collapse-btn');
+const collapsedNav = document.querySelector('.collapsed-navbar');
 function toggleNavbar() {
-    const collapsedBtn = document.querySelector('.navbar-collapse-btn');
     if (collapsedBtn) {
         let isClicked = collapsedBtn.getAttribute('data-active') === 'true';
         if (!isClicked) {
-            document.querySelector('.collapsed-navbar').classList.add('show');
+            collapsedNav.classList.add('show');
             collapsedBtn.setAttribute('data-active', 'true')
 
         }
         else {
-            document.querySelector('.collapsed-navbar').classList.remove('show');
+            collapsedNav.classList.remove('show');
             collapsedBtn.setAttribute('data-active', 'false');
         }
     }
@@ -35,6 +45,13 @@ function copyLink() {
         document.querySelector('.alert').style.display = 'none';
     }, 2000);
 }
+
+document.addEventListener('click', (e) => {
+    if (!collapsedNav.contains(e.target) && !collapsedBtn.contains(e.target) && collapsedNav.classList.contains('show')) {
+        collapsedNav.classList.remove('show');
+        collapsedBtn.setAttribute('data-active', 'false');
+    }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     checkActivePage();
