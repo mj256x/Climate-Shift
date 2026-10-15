@@ -1,5 +1,5 @@
+let navLinks = document.querySelectorAll('.nav-link');
 function checkActivePage() {
-    let navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         if (window.location.href === link.querySelector('a').href) {
             link.classList.add('active');
@@ -10,17 +10,18 @@ function checkActivePage() {
     });
 }
 
+const collapsedBtn = document.querySelector('.navbar-collapse-btn');
+const collapsedNav = document.querySelector('.collapsed-navbar');
 function toggleNavbar() {
-    const collapsedBtn = document.querySelector('.navbar-collapse-btn');
     if (collapsedBtn) {
         let isClicked = collapsedBtn.getAttribute('data-active') === 'true';
         if (!isClicked) {
-            document.querySelector('.collapsed-navbar').classList.add('show');
-            collapsedBtn.setAttribute('data-active', 'true')
+            collapsedNav.classList.add('show');
+            collapsedBtn.setAttribute('data-active', 'true');
 
         }
         else {
-            document.querySelector('.collapsed-navbar').classList.remove('show');
+            collapsedNav.classList.remove('show');
             collapsedBtn.setAttribute('data-active', 'false');
         }
     }
@@ -35,6 +36,13 @@ function copyLink() {
         document.querySelector('.alert').style.display = 'none';
     }, 2000);
 }
+
+document.addEventListener('click', (e) => {
+    if (!collapsedNav.contains(e.target) && !collapsedBtn.contains(e.target) && collapsedNav.classList.contains('show')) {
+        collapsedNav.classList.remove('show');
+        collapsedBtn.setAttribute('data-active', 'false');
+    }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     checkActivePage();

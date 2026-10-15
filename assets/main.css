@@ -15,8 +15,13 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    text-decoration: none;
-    list-style: none;
+    text-decoration: none !important;
+    list-style: none !important;
+}
+
+ul {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 body {
@@ -52,19 +57,20 @@ body {
     color: var(--text);
 }
 
-.navbar-brand .navbar-brand-title span {
-    color: var(--orange);
-}
-
 .logo {
     width: 55px;
     min-height: 50px;
 }
 
 .navbar-brand-title {
-    font-family: var(--header-font);
+    font-family: var(--header-font) !important;
     font-weight: 500;
     font-size: 1.5rem;
+    color: var(--light-text);
+}
+
+.navbar-brand .navbar-brand-title span {
+    color: var(--orange);
 }
 
 .navbar-collapse-btn {
@@ -75,6 +81,7 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    color: var(--text);
     transition: background-color 0.3s ease-in;
 }
 
@@ -134,6 +141,51 @@ body {
     font-weight: 500;
     color: var(--text);
     text-wrap: nowrap;
+}
+
+.search-input {
+    background-color: var(--light-text);
+    color: var(--dark-text);
+    width: 300px;
+    outline: none;
+    padding: 6px 2.25rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-input:focus {
+    box-shadow: 0 0 5px 2px var(--light-text);
+    width: 305px;
+}
+
+.search-input::placeholder {
+    text-align: center;
+    color: var(--dark-text);
+}
+
+.result-card {
+    width: 300px;
+    height: auto;
+    padding: 1.25rem;
+    background-color: var(--bg-color);
+    position: absolute;
+    top: 50px;
+    left: 0;
+    border-radius: 6px;
+}
+
+.location-btn {
+    width: 100%;
+    background-color: var(--light-text);
+    color: var(--dark-text);
+    font-family: var(--p-font);
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+.location-btn:hover {
+    background-color: var(--hover-btn);
+    color: var(--light-text);
 }
 
 /* End NavBar */
@@ -257,7 +309,7 @@ body {
     gap: 12px;
 }
 
-.card {
+.hero-card {
     width: 100%;
     height: auto;
     background-color: rgb(212, 228, 243);
@@ -268,17 +320,17 @@ body {
     gap: 12px;
 }
 
-.content-cards .card .card-info {
+.content-cards .hero-card .card-info {
     width: 100%;
 }
 
-.content-cards .card .card-info strong {
+.content-cards .hero-card .card-info strong {
     font-size: 1.5rem;
     font-family: var(--header-font);
     color: var(--nav-footer);
 }
 
-.content-cards .card .card-info p {
+.content-cards .hero-card .card-info p {
     color: var(--nav-footer);
     font-family: var(--p-font);
 }
@@ -772,6 +824,50 @@ body {
     color: var(--text);
 }
 
+/*Weather page*/
+.weather-page {
+    background-color: #fff;
+    color: var(--dark-text);
+}
+
+.weather-search svg {
+    color: var(--dark-text);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+}
+
+.location-current .weather-card {
+    background-color: var(--light-text);
+    box-shadow: 0 0 7px 0.05rem rgb(0 0 0 / 0.1);
+    transition: transform 0.2s ease-in-out;
+    user-select: none;
+}
+
+.location-current .weather-card:hover {
+    transform: translateY(-1px);
+}
+
+.forecat-cards .today-card,
+.forecat-cards .tomorrow-card,
+.forecat-cards .after-tomorrow-card {
+    border: 1px solid var(--light-text);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 0 7px 0.05rem rgb(0 0 0 / 0.1);
+    transition: transform 0.2s ease-in-out;
+    user-select: none;
+}
+
+.forecat-cards .today-card:hover,
+.forecat-cards .tomorrow-card:hover,
+.forecat-cards .after-tomorrow-card:hover {
+    transform: translateY(-1px);
+}
+
+/*end weather page*/
+
 /* End Take-Action-Content */
 
 @media (max-width:768px) {
@@ -963,6 +1059,36 @@ body {
     }
 
     /* End Mobile Take-Action-Content */
+    .weather-search {
+        display: none !important;
+    }
+
+    .collapsed-weather-search {
+        display: flex !important;
+    }
+
+    .weather-page {
+        padding: 1rem !important;
+    }
+
+    .location {
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 2rem !important;
+    }
+
+    .forecat-cards .today-card,
+    .forecat-cards .tomorrow-card,
+    .forecat-cards .after-tomorrow-card {
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+
+    .location-current-temp {
+        flex-direction: row !important;
+    }
 }
 
 @media (min-width:769px) {
