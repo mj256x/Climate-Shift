@@ -866,6 +866,23 @@ body {
     transform: translateY(-1px);
 }
 
+.convert-btn {
+    background-color: var(--dark-text);
+    color: var(--light-text);
+    border-top: 3px solid var(--orange);
+    border-left: 3px solid var(--orange);
+    border-right: 3px transparent;
+    border-bottom: 3px transparent;
+}
+
+.convert-btn:hover {
+    background-color: var(--hover-btn);
+    border-right: 3px solid var(--orange);
+    border-bottom: 3px solid var(--orange);
+    border-left: 3px transparent;
+    border-top: 3px transparent;
+}
+
 /*end weather page*/
 
 /* End Take-Action-Content */
