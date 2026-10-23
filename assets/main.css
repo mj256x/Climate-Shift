@@ -1,8 +1,11 @@
 :root {
-    --bg-color: #062a46;
-    --nav-footer: #021e33;
+    --bg-dark-color: #062a46;
+    --bg-light-color: #d4e0ea;
+    --dark-nav-footer: #021e33;
+    --light-nav-footer: rgb(212, 228, 243);
+    --dark-cards: #055089;
     --text: #eee;
-    --dark-text: #062b48;
+    --dark-text: #0b3759;
     --light-text: #b5d8e8;
     --hover-btn: #204f70;
     --orange: #e95938;
@@ -19,7 +22,8 @@
     list-style: none !important;
 }
 
-ul {
+ul,
+p {
     margin: 0 !important;
     padding: 0 !important;
 }
@@ -28,14 +32,47 @@ body {
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    background-color: var(--bg-color);
+    background-color: var(--bg-dark-color);
     position: relative;
+    transition: background-color 0.3s ease-in;
 }
+
+
+/* dark-mode classes*/
+.dark-navbar-footer {
+    background-color: var(--dark-nav-footer) !important;
+}
+
+.dark-mode-text {
+    color: var(--light-text) !important;
+}
+
+.dark-body {
+    background-color: var(--bg-dark-color) !important;
+}
+
+.dark-card {
+    background-color: var(--dark-cards) !important;
+}
+
+.dark-mode-svg {
+    fill: var(--light-text) !important;
+}
+
+.dark-mode-light-svg {
+    fill: var(--light-text) !important;
+}
+
+.dark-mode-svg-circle {
+    fill: var(--dark-cards) !important;
+}
+
+/**/
 
 /* Start NavBar */
 .navbar {
     width: 100%;
-    background-color: var(--nav-footer);
+    background-color: var(--light-nav-footer);
     padding: 10px 20px;
     position: sticky;
     z-index: 1001;
@@ -45,6 +82,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    transition: background-color 0.3s ease-in;
 }
 
 .navbar-brand {
@@ -66,7 +104,8 @@ body {
     font-family: var(--header-font) !important;
     font-weight: 500;
     font-size: 1.5rem;
-    color: var(--light-text);
+    color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
 .navbar-brand .navbar-brand-title span {
@@ -81,21 +120,17 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    color: var(--text);
-    transition: background-color 0.3s ease-in;
-}
-
-.navbar-collapse-btn:hover {
-    background-color: var(--hover-btn);
+    color: var(--dark-text);
+    transition: color 0.3s ease-in;
 }
 
 .collapsed-navbar {
-    background-color: var(--nav-footer);
+    background-color: var(--light-nav-footer);
     width: 100%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 62px;
+    top: 70px;
     padding: 15px;
     display: none;
     z-index: 1000;
@@ -120,6 +155,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 15px;
+    margin-left: auto !important;
 }
 
 .nav-link {
@@ -139,8 +175,9 @@ body {
 .nav-link a {
     font-family: var(--header-font);
     font-weight: 500;
-    color: var(--text);
+    color: var(--dark-text);
     text-wrap: nowrap;
+    transition: color 0.2s ease-in;
 }
 
 .search-input {
@@ -166,7 +203,7 @@ body {
     width: 300px;
     height: auto;
     padding: 1.25rem;
-    background-color: var(--bg-color);
+    background-color: var(--bg-dark-color);
     position: absolute;
     top: 50px;
     left: 0;
@@ -188,22 +225,34 @@ body {
     color: var(--light-text);
 }
 
+.theme-btn {
+    color: var(--bg-light-color) !important;
+    border: 2px solid var(--orange);
+}
+
+.theme-btn svg {
+    color: var(--orange) !important;
+}
+
 /* End NavBar */
 
 /*Start Footer */
 .footer {
     width: 100%;
-    background-color: var(--nav-footer);
+    background-color: var(--light-nav-footer);
     color: var(--text);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
+    transition: background-color 0.2s ease-in;
 }
 
 .footer-text {
+    color: var(--dark-text);
     font-family: var(--header-font);
+    transition: color 0.2s ease-in;
 }
 
 .footer-brand {
@@ -227,7 +276,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     padding: 20px;
-    background-image: url(images/c.webp);
+    background-image: url(images/c-light.webp);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -245,14 +294,16 @@ body {
     font-family: var(--header-font);
     font-weight: bold;
     font-size: 4rem;
-    color: var(--text);
+    color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
 .content-description {
     font-family: var(--p-font);
     font-weight: 400;
     font-size: 1.25rem;
-    color: var(--text);
+    color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
 .pages-links {
@@ -312,26 +363,27 @@ body {
 .hero-card {
     width: 100%;
     height: auto;
-    background-color: rgb(212, 228, 243);
+    background-color: var(--bg-light-color);
     border-radius: 20px;
     padding: 15px;
     display: flex;
     align-items: flex-start;
     gap: 12px;
+    transition: background-color 0.2s ease-in;
 }
 
 .content-cards .hero-card .card-info {
     width: 100%;
+    color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
-.content-cards .hero-card .card-info strong {
+.content-cards .hero-card .card-info span {
     font-size: 1.5rem;
     font-family: var(--header-font);
-    color: var(--nav-footer);
 }
 
 .content-cards .hero-card .card-info p {
-    color: var(--nav-footer);
     font-family: var(--p-font);
 }
 
@@ -364,6 +416,7 @@ body {
     align-items: flex-start;
     gap: 10px;
     color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
 .signals-brief-title {
@@ -403,6 +456,7 @@ body {
     gap: 10px;
     border-radius: 20px;
     padding: 10px;
+    transition: background-color 0.2s ease-in;
 }
 
 .signal-card-title {
@@ -410,11 +464,13 @@ body {
     font-weight: bold;
     font-size: 1.5rem;
     color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
 .signal-card-description {
     color: var(--dark-text);
     font-family: var(--p-font);
+    transition: color 0.2s ease-in;
 }
 
 .signal-card img {
@@ -436,7 +492,7 @@ body {
 }
 
 .why-section {
-    background-color: var(--bg-color);
+    background-color: var(--light-nav-footer);
     width: 40%;
     height: 100%;
     display: flex;
@@ -446,6 +502,7 @@ body {
     gap: 20px;
     border-radius: 20px 0 0 20px;
     padding: 10px;
+    transition: background-color 0.2s ease-in;
 }
 
 .why-info {
@@ -453,7 +510,8 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    color: var(--text);
+    color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
 .why-info h1 {
@@ -464,6 +522,11 @@ body {
 
 .why-info p {
     font-family: var(--p-font);
+}
+
+.why-section svg {
+    fill: var(--dark-text);
+    transition: fill 0.2s ease-in;
 }
 
 .reasons {
@@ -484,7 +547,7 @@ body {
     align-items: center;
     gap: 12px;
     padding: 0 10px;
-    border-right: 3px solid #062a46;
+    border-right: 3px solid var(--dark-text);
 }
 
 .reasons .reason:last-child {
@@ -498,6 +561,10 @@ body {
 .reason p {
     font-family: var(--p-font);
     color: var(--dark-text);
+}
+
+.reason svg {
+    fill: var(--dark-text);
 }
 
 /* End Signals-Content */
@@ -556,6 +623,7 @@ body {
     font-size: 3rem;
     font-weight: bold;
     color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
 .take-action-hero span {
@@ -565,6 +633,7 @@ body {
 .take-action-hero .hero-description {
     font-family: var(--p-font);
     color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
 .take-action-cards {
@@ -627,7 +696,7 @@ body {
 }
 
 .take-action-cards .take-action-card:nth-child(2) .card-title {
-    background-color: var(--bg-color);
+    background-color: var(--dark-cards);
     color: var(--text);
 }
 
@@ -648,13 +717,14 @@ body {
 
 .take-action-checklist {
     width: 40%;
-    background-color: var(--bg-color);
+    background-color: var(--light-nav-footer);
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-content: flex-start;
     gap: 10px;
     padding: 20px;
+    transition: background-color 0.2s ease-in;
 }
 
 .take-action-checklist .card-title,
@@ -664,12 +734,13 @@ body {
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
-    color: var(--text);
+    color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
 .take-action-checklist svg {
-    fill: var(--light-text);
-    color: var(--bg-color) !important;
+    fill: var(--dark-text);
+    transition: fill 0.2s ease-in;
 }
 
 .take-action-checklist .card-title span {
@@ -701,7 +772,8 @@ body {
     font-family: var(--header-font);
     font-weight: bold;
     font-size: 1.4rem;
-    color: var(--text);
+    color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
 .action-steps .action-step {
@@ -729,7 +801,8 @@ body {
 .action-steps .action-step span {
     font-family: var(--p-font);
     font-weight: bold;
-    color: var(--text);
+    color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
 .action-steps .action-step:last-child span:first-child {
@@ -744,12 +817,13 @@ body {
 
 .take-action-now {
     width: 100%;
-    background-color: var(--bg-color);
+    background-color: var(--light-nav-footer);
     border-radius: 20px 20px 0 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: -20px;
     padding: 10px 20px;
+    transition: background-color 0.2s ease-in;
 }
 
 .take-action-now div {
@@ -766,7 +840,7 @@ body {
     content: '';
     height: 80px;
     width: 2px;
-    background-color: var(--light-text);
+    background-color: var(--dark-text);
     border-radius: 20px;
     margin-left: 25px;
 }
@@ -780,7 +854,8 @@ body {
     font-family: var(--header-font);
     font-size: 3rem;
     font-weight: bold;
-    color: var(--light-text);
+    color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
 .take-action-now div h1 span {
@@ -791,7 +866,8 @@ body {
     width: 100%;
     font-family: var(--p-font);
     font-size: 1.3rem;
-    color: var(--light-text);
+    color: var(--dark-text);
+    transition: color 0.2s ease-in;
 }
 
 .take-action-now div button {
@@ -826,8 +902,9 @@ body {
 
 /*Weather page*/
 .weather-page {
-    background-color: #fff;
+    background-color: #eee;
     color: var(--dark-text);
+    transition: all 0.2s ease-in;
 }
 
 .weather-search svg {

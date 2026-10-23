@@ -46,12 +46,16 @@ async function showLocationWeather(locationName, triggerEl) {
         }
         const mainSection = document.querySelector('main');
         mainSection.innerHTML = locationPage;
-        mainSection.classList = 'weather-page w-100 d-flex flex-column justify-content-center align-items-center gap-4 p-4';
+        mainSection.className = 'weather-page w-100 d-flex flex-column justify-content-center align-items-center gap-4 p-4';
+        mainSection.style.backgroundImage = '';
         collapsedNav.classList.remove('show');
         collapsedBtn.setAttribute('data-active', 'false');
         navLinks.forEach(link => {
             link.classList.remove('active');
         });
+        if (localStorage.getItem('theme') === 'dark') {
+            applyTheme(true);
+        }
     } catch (error) {
         renderErrorPage(error);
         return;
@@ -73,6 +77,10 @@ function renderErrorPage(error) {
         </div>
     `;
     mainSection.className = 'weather-page w-100 d-flex flex-column justify-content-center align-items-center gap-4 p-4';
+    mainSection.style.backgroundImage = '';
+    if (localStorage.getItem('theme') === 'dark') {
+        applyTheme(true);
+    }
 }
 
 function convertTemp(btn) {
